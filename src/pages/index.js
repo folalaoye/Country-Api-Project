@@ -24,6 +24,7 @@ export default function Home({countries}) {
   const filteredCountries = countries
   .filter(country => selectedRegion === 'All' || country.region === selectedRegion)
   .filter(country => country.name.common.toLowerCase().includes(searchCountry.toLowerCase().trim()))
+  .sort((a, b) => a.name.common.localeCompare(b.name.common))
 
   const indexofLastCountry = currentPage * countriesPerPage;
   const indexofFirstCountry = indexofLastCountry - countriesPerPage;
